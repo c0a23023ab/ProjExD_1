@@ -14,16 +14,20 @@ def main():
     x = 0
     kt_img = pg.image.load("fig/3.png")
     kt_img = pg.transform.flip(kt_img,True,False)
+    bga_img = pg.transform.flip(bg_img,True,False)
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [x, 0])
+        screen.blit(bga_img, [x + 1600, 0])
+        screen.blit(bg_img, [x + 3200, 0])
+        screen.blit(bga_img, [x + 4800, 0])
         screen.blit(kt_img,[300,200])
         pg.display.update()
         tmr += 1        
-        x = -(tmr%800)
-        clock.tick(200)
+        x = -(tmr%3200)
+        clock.tick(600)
 
 
 if __name__ == "__main__":
