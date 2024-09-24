@@ -26,14 +26,16 @@ def main():
         screen.blit(bg_img, [x + 3200, 0])
         screen.blit(bga_img, [x + 4800, 0])
         key_lst = pg.key.get_pressed()
-        if key_lst[pg.K_UP]:
-            kt_rct.move_ip((0, -1))
-        elif key_lst[pg.K_DOWN]:
-            kt_rct.move_ip((0, 1))
-        elif key_lst[pg.K_RIGHT]:
-            kt_rct.move_ip((1, 0))
+        if key_lst[pg.K_RIGHT]:
+            kt_rct.move_ip((2, 0))
         elif key_lst[pg.K_LEFT]:
             kt_rct.move_ip((-1, 0))
+        else:
+            kt_rct.move_ip((-1, 0))
+            if key_lst[pg.K_UP]:
+                kt_rct.move_ip((0, -1))
+            elif key_lst[pg.K_DOWN]:
+                kt_rct.move_ip((0, 1))
         screen.blit(kt_img,kt_rct)
         pg.display.update()
         tmr += 1        
