@@ -12,6 +12,8 @@ def main():
     bg_img = pg.image.load("fig/pg_bg.jpg")
     tmr = 0
     x = 0
+    move_x = 0
+    move_y = 0
     kt_img = pg.image.load("fig/3.png")
     kt_img = pg.transform.flip(kt_img,True,False)
     bga_img = pg.transform.flip(bg_img,True,False)
@@ -26,15 +28,27 @@ def main():
         screen.blit(bg_img, [x + 3200, 0])
         screen.blit(bga_img, [x + 4800, 0])
         key_lst = pg.key.get_pressed()
-        kt_rct.move_ip((-1, 0))
+        #if key_lst[pg.K_UP]:
+        #    kt_rct.move_ip((0, -1))
+        #elif key_lst[pg.K_DOWN]:
+        #    kt_rct.move_ip((0, 1))
+        #if key_lst[pg.K_RIGHT]:
+        #    kt_rct.move_ip((2, 0))
+        #elif key_lst[pg.K_LEFT]:
+        #    kt_rct.move_ip((-1, 0))
         if key_lst[pg.K_UP]:
-            kt_rct.move_ip((0, -1))
-        if key_lst[pg.K_DOWN]:
-            kt_rct.move_ip((0, 1))
+            move_y = -1
+        elif key_lst[pg.K_DOWN]:
+            move_y = 1
+        else:
+            move_y = 0
         if key_lst[pg.K_RIGHT]:
-            kt_rct.move_ip((2, 0))
-        if key_lst[pg.K_LEFT]:
-            kt_rct.move_ip((-1, 0))
+            move_x = 2
+        elif key_lst[pg.K_LEFT]:
+            move_x = -1
+        else:
+            move_x = -1
+        kt_rct.move_ip((move_x, move_y))
         screen.blit(kt_img,kt_rct)
         pg.display.update()
         tmr += 1        
